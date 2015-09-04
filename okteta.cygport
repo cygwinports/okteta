@@ -1,14 +1,67 @@
-inherit kde4
+inherit kf5
 
 NAME="okteta"
-VERSION=4.14.3
+VERSION=15.04.3
 RELEASE=1
-CATEGORY="Devel"
+CATEGORY="Devel KDE"
 SUMMARY="KDE binary file editor"
 DESCRIPTION="Part of the KDE developer tools suite"
 
-PKG_NAMES="${NAME} ${NAME}-devel"
-okteta_REQUIRES="kde-runtime"
-okteta_CONTENTS="etc/ usr/bin/ usr/lib/kde4/ usr/share/"
-okteta_devel_REQUIRES="libkdecore-devel"
-okteta_devel_CONTENTS="usr/include/ usr/lib/lib*.dll.a"
+PKG_NAMES="${NAME} okteta5-part libkasten3_3 libkasten3-devel libokteta2_2 libokteta2-devel"
+okteta_REQUIRES="okteta5-part"
+okteta_CONTENTS="
+	etc/postinstall/
+	usr/bin/okteta.exe
+	usr/bin/struct2osd
+	usr/share/appdata/org.kde.okteta.appdata.xml
+	usr/share/applications/org.kde.okteta.desktop
+	usr/share/doc/HTML/en/okteta/
+	usr/share/doc/okteta/
+	usr/share/icons/hicolor/*/apps/okteta.*
+	usr/share/kxmlgui5/okteta/
+	usr/share/mime/packages/okteta.xml
+"
+okteta5_part_CATEGORY="KDE"
+okteta5_part_SUMMARY="${SUMMARY} plugin"
+okteta5_part_CONTENTS="
+	${QT5_PLUGINSDIR#/}/oktetapart.dll
+	usr/share/oktetapart/
+"
+libkasten3_3_CATEGORY="Libs"
+libkasten3_3_SUMMARY="KDE Kasten framework"
+libkasten3_3_CONTENTS="
+	usr/bin/cygkasten3controllers-3.dll
+	usr/bin/cygkasten3core-3.dll
+	usr/bin/cygkasten3gui-3.dll
+"
+libokteta2_2_CATEGORY="Libs"
+libokteta2_2_SUMMARY="${SUMMARY} libraries"
+libokteta2_2_CONTENTS="
+	etc/xdg/okteta-structures.knsrc
+	usr/bin/cygkasten3okteta1*-1.dll
+	usr/bin/cygokteta2*-2.dll
+	usr/share/okteta/structures/
+	usr/share/config.kcfg/structviewpreferences.kcfg
+"
+libkasten3_devel_CATEGORY="Libs"
+libkasten3_devel_SUMMARY="KDE Kasten framework"
+libkasten3_devel_REQUIRES="libKF5KIO-devel libKF5XmlGui-devel libQt5Gui-devel"
+libkasten3_devel_CONTENTS="
+	--exclude=[Oo]kteta
+	usr/include/[Kk]asten/
+	usr/lib/cmake/Kasten*/
+	usr/lib/libkasten3controllers.dll.a
+	usr/lib/libkasten3core.dll.a
+	usr/lib/libkasten3gui.dll.a
+"
+libokteta2_devel_CATEGORY="Libs"
+libokteta2_devel_SUMMARY="${SUMMARY} libraries"
+libokteta2_devel_REQUIRES="libkasten3-devel"
+libokteta2_devel_CONTENTS="
+	usr/include/[Kk]asten/[Oo]kteta/
+	usr/include/[Oo]kteta/
+	usr/lib/cmake/Okteta*/
+	usr/lib/libkasten3okteta1*.dll.a
+	usr/lib/libokteta2*.dll.a
+	${QT5_PLUGINSDIR#/}/designer/oktetadesignerplugin.dll
+"
