@@ -1,7 +1,7 @@
 inherit kf5
 
 NAME="okteta"
-VERSION=15.04.3
+VERSION=16.08.3
 RELEASE=1
 CATEGORY="Devel KDE"
 SUMMARY="KDE binary file editor"
@@ -13,19 +13,19 @@ okteta_CONTENTS="
 	etc/postinstall/
 	usr/bin/okteta.exe
 	usr/bin/struct2osd
-	usr/share/appdata/org.kde.okteta.appdata.xml
 	usr/share/applications/org.kde.okteta.desktop
 	usr/share/doc/HTML/en/okteta/
 	usr/share/doc/okteta/
 	usr/share/icons/hicolor/*/apps/okteta.*
 	usr/share/kxmlgui5/okteta/
+	usr/share/metainfo/org.kde.okteta.appdata.xml
 	usr/share/mime/packages/okteta.xml
 "
 okteta5_part_CATEGORY="KDE"
 okteta5_part_SUMMARY="${SUMMARY} plugin"
 okteta5_part_CONTENTS="
 	${QT5_PLUGINSDIR#/}/oktetapart.dll
-	usr/share/oktetapart/
+	usr/share/kxmlgui5/oktetapart/
 "
 libkasten3_3_CATEGORY="Libs"
 libkasten3_3_SUMMARY="KDE Kasten framework"
