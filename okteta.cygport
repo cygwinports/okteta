@@ -1,7 +1,7 @@
 inherit kf5
 
 NAME="okteta"
-VERSION=17.08.3
+VERSION=17.12.3
 RELEASE=1
 CATEGORY="Devel KDE"
 SUMMARY="KDE binary file editor"
@@ -67,5 +67,5 @@ libokteta2_devel_CONTENTS="
 	usr/lib/cmake/Okteta*/
 	usr/lib/libkasten3okteta1*.dll.a
 	usr/lib/libokteta2*.dll.a
-	${QT5_PLUGINSDIR#/}/designer/oktetadesignerplugin.dll
+	${QT5_PLUGINSDIR#/}/designer/oktetawidgets.dll
 "
